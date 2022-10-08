@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
+import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import javax.servlet.FilterChain;
@@ -17,17 +18,24 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 
+@Component
 public class JwtAuthFilter extends OncePerRequestFilter {
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
 
     @Autowired
     UserRepository repository;
+    private HttpServletRequest request;
+    private HttpServletResponse response;
+    private FilterChain filterChain;
 
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-            String header = request.getHeader("Authorization");
+        this.request = request;
+        this.response = response;
+        this.filterChain = filterChain;
+        String header = request.getHeader("Authorization");
             String username = null;
             String token = null;
 

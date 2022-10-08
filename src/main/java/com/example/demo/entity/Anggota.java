@@ -36,7 +36,7 @@ public class Anggota {
     @OneToMany(mappedBy = "anggota")
     private List<Pengembalian> pengembalianList;
 
-//    @ManyToOne
-//    @JoinColumn(name = "id_user")
-//    private User user;
+    @ManyToOne
+    @JoinColumn(name = "id_user")
+    private User user;
 }
