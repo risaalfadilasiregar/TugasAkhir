@@ -1,11 +1,14 @@
 package com.example.demo.controller;
 
+import com.example.demo.common.Response;
 import com.example.demo.entity.dto.AnggotaDTO;
 import com.example.demo.service.Impl.AnggotaServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/anggota")
@@ -15,13 +18,14 @@ public class AnggotaController {
     private AnggotaServiceImpl service;
 
     @GetMapping("/find-all")
-    public ResponseEntity<?> findAllData(){
-        return new ResponseEntity<>(service.findAllData(), HttpStatus.OK);
+    public Response findAllData(){
+        List<AnggotaDTO> data = service.findAllData();
+        return new Response(data, "Get All Data Anggota", data.size(), HttpStatus.OK);
     }
 
     @PostMapping("/create")
-    public ResponseEntity<?>saveData(@RequestBody AnggotaDTO param){
-        return new ResponseEntity<>(service.save(param),HttpStatus.OK);
+    public ResponseEntity<?> saveData(@RequestBody AnggotaDTO param){
+        return new ResponseEntity<>(service.save(param), HttpStatus.OK);
     }
     @PutMapping("/update/{id}")
     public ResponseEntity<?>updateData(@PathVariable Long id,
@@ -37,18 +41,16 @@ public class AnggotaController {
         }
     }
     @GetMapping("/find-by-id/{id}")
-    public ResponseEntity<?>findById(@PathVariable Long id){
-        return  new ResponseEntity<>(service.findById(id), HttpStatus.OK);
+    public Response findById(@PathVariable Long id){
+        return new Response(service.findById(id), "Berhasil Mengabil Data dari id " + id, HttpStatus.OK);
     }
 
-    @DeleteMapping("delete/{id}")
-    public ResponseEntity<?>deleteData(@PathVariable Long id){
+    @DeleteMapping("/delete/{id}")
+    public Response deleteData(@PathVariable Long id){
         if (service.delete(id)){
-            return new ResponseEntity<>(HttpStatus.OK);
-        }
-        else
-        {
-            return new ResponseEntity<>(HttpStatus.BAD_GATEWAY);
+            return new Response("Data Berhasil di Hapus",HttpStatus.OK);
+        }else{
+            return new Response("Data Gagal di Hapus",HttpStatus.BAD_REQUEST);
         }
     }
 }

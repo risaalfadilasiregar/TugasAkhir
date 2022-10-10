@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -26,8 +27,8 @@ public class Peminjaman {
     @OneToMany(mappedBy = "peminjaman_id")
     private List<PeminjamanDetail> peminjamanDetailList;
 
-    @OneToMany(mappedBy = "peminjaman")
-    private List<Pengembalian> pengembalianList;
+//    @OneToMany(mappedBy = "peminjaman")
+//    private List<Pengembalian> pengembalianList;
 
     @ManyToOne
     @JoinColumn(name = "anggota_id")
@@ -36,5 +37,13 @@ public class Peminjaman {
     @ManyToOne
     @JoinColumn(name = "petugas_id")
     private Petugas petugas;
+
+    @ManyToMany
+    @JoinTable(name = "peminjamanDetail")
+    private List<Buku> buku;
+
+    @JsonIgnore
+    @OneToOne(mappedBy = "peminjaman")
+    private Pengembalian pengembalian;
 
 }

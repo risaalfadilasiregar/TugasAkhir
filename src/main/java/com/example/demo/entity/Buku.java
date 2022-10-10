@@ -31,11 +31,13 @@ public class Buku {
     @Column(columnDefinition = "VARCHAR(255)")
     private String isbn;
 
-    @OneToMany(mappedBy = "buku")
-    private List<PeminjamanDetail> peminjamanDetailList;
+    @JsonIgnore
+    @ManyToMany(mappedBy = "buku")
+    private List<Peminjaman> peminjaman;
 
-    @OneToMany(mappedBy = "buku")
-    private List<PengembalianDetail> pengembalianDetailList;
+    @JsonIgnore
+    @ManyToMany(mappedBy = "buku")
+    private List<Pengembalian>pengembalian;
 
     @ManyToOne
     @JoinColumn(name = "pengarang_id")

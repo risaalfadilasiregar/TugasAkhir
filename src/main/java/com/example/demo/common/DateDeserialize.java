@@ -12,7 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @JsonComponent
-public class DateDeserialize extends JsonDeserializer {
+public class DateDeserialize extends JsonDeserializer<Date> {
 
     private static final String[] DATE_FORMAT = {
             "dd-MM-yyyy",

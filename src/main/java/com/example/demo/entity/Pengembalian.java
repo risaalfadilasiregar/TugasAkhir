@@ -27,8 +27,7 @@ public class Pengembalian {
     @OneToMany(mappedBy = "pengembalian_id")
     private List<PengembalianDetail> pengembalianDetailList;
 
-    @ManyToOne
-    @JoinColumn(name = "peminjaman_id")
+    @OneToOne
     private Peminjaman peminjaman;
 
     @ManyToOne
@@ -39,4 +38,7 @@ public class Pengembalian {
     @JoinColumn(name = "petugas_id")
     private Petugas petugas;
 
+    @ManyToMany
+    @JoinTable(name = "pengembalianDetail")
+    private List<Buku> buku;
 }

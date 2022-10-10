@@ -1,4 +1,10 @@
-//package com.example.demo.service.Impl;
+package com.example.demo.service.Impl;
+
+import com.example.demo.entity.dto.PeminjamanDetailDTO;
+import com.example.demo.service.PeminjamanDetailService;
+
+import java.util.List;
+
 //
 //import com.example.demo.entity.Buku;
 //import com.example.demo.entity.PeminjamanDetail;
@@ -13,7 +19,31 @@
 //import javax.transaction.Transactional;
 //import java.util.List;
 //
-//public class PeminjamanDetailServiceImpl implements PeminjamanDetailService {
+public class PeminjamanDetailServiceImpl implements PeminjamanDetailService {
+    @Override
+    public PeminjamanDetailDTO save(PeminjamanDetailDTO param) {
+        return null;
+    }
+
+    @Override
+    public List<PeminjamanDetailDTO> findAllData() {
+        return null;
+    }
+
+    @Override
+    public PeminjamanDetailDTO update(PeminjamanDetailDTO param, Long id) {
+        return null;
+    }
+
+    @Override
+    public Boolean delete(Long id) {
+        return null;
+    }
+
+    @Override
+    public PeminjamanDetailDTO findById(Long id) {
+        return null;
+    }
 //
 //    @Autowired
 //    private PeminjamanDetailRepository repository;
@@ -81,4 +111,4 @@
 //    public PeminjamanDetailDTO findById(Long id) {
 //       return PeminjamanDetailMapping.instance.toDto(repository.findById(id).orElse(null));
 //    }
-//}
+}
