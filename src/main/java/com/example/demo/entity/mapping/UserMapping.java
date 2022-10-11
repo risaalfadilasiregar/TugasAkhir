@@ -14,7 +14,7 @@ public interface UserMapping {
 
     User toEntity(UserDTO dto);
 
-    UserDTO toDto(org.springframework.security.core.userdetails.User param);
+    UserDTO toDto(User param);
 
     List<UserDTO> toListDto(List<User> data);
 

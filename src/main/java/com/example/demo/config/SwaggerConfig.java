@@ -21,7 +21,7 @@ public class SwaggerConfig {
                 .securitySchemes(Collections.singletonList(securityScheme()))
                 .securityContexts(Collections.singletonList(securityContext()))
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.sinaukoding.tokosinau"))
+                .apis(RequestHandlerSelectors.basePackage("com.example.demo"))
                 .build()
                 .apiInfo(apiInfo());
     }

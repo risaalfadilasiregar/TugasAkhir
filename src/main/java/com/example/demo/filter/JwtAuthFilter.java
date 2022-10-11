@@ -2,13 +2,13 @@ package com.example.demo.filter;
 
 //import com.example.demo.config.JwtTokenUtil;
 import com.example.demo.config.JwtTokenUtil;
+import com.example.demo.entity.User;
 import com.example.demo.repository.UserRepository;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.SignatureException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
